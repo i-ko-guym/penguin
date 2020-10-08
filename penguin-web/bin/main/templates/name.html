@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Name</title>
+<style>
+.input-error {
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<form th:action="@{/profile/age}" th:object="${profileForm}" method="post">
+    <p>
+        <label for="name">名前を入力してください</label>
+        <!-- th:field属性:入力内容が復元されるようになり -->
+        <input type="text" name="name" id="name" th:field="*{name}" th:errorclass="input-error">
+        <span style="color: red;" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </p>
+    <p>
+        <input type="submit" value="次へ">
+    </p>
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+}
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+eclipse.wtp {
+    component.contextPath = 'penguin-web'
+    facet {
+        facet name: 'jst.java', version: '1.8'
+        facet name: 'wst.jsdt.web', version: '1.0'
+        facet name: 'jst.web', version: '3.1'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
